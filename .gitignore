@@ -1,0 +1,13 @@
+# Python bytecode directories
+__pycache__/
+
+# Virtual environment directories
+venv/
+.venv/
+env/
+ENV/
+venv.bak/
+env.bak/
+
+# macOS metadata files
+.DS_Store
