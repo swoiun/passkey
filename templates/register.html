@@ -2,19 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Passkey-test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passkey Test</title>
   <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-  <h1>Log in with Passkey</h1>
-  <form id="register-form">
-    <input type="text" id="username" placeholder="username" />
-    <button type="submit">Create Passkey</button>
-    <small>Your passkey will be saved securely to this device.</small>
-  </form>
-  <div id="result"></div>
+  <div class="container">
+    <h1>패스키로 로그인</h1>
+    <form id="register-form">
+      <input type="text" id="username" placeholder="사용자 이름" required />
+      <button type="submit">패스키 생성</button>
+      <small>패스키는 이 기기에 안전하게 저장됩니다.</small>
+    </form>
+    <div id="result" class="message-box"></div>
+  </div>
 
   <script src="/static/js/register.js"></script>
 </body>
-
 </html>
