@@ -12,16 +12,15 @@ body {
 }
 
 .container {
+  margin-top: -30px;
   background-color: #ffffff;
   padding: 2.5rem;
   border-radius: 25px; /* 스쿼클 느낌을 위해 곡률 증가 */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   max-width: 450px; /* 컨테이너 최대 너비 유지 */
   width: 90%; /* 반응형 너비 */
   box-sizing: border-box;
+  height: 400px; /* 고정 높이 */
 }
 
 h1 {
@@ -88,11 +87,9 @@ button:active {
 }
 
 small {
-  display: block; /* 블록 요소로 변경하여 줄바꿈 */
   font-size: 0.85rem;
   color: #777;
   text-align: center;
-  margin-top: 0.5rem;
 }
 
 .message-box {

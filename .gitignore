@@ -8,6 +8,7 @@ env/
 ENV/
 venv.bak/
 env.bak/
+.env
 
 # macOS metadata files
 .DS_Store
