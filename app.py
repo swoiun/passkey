@@ -15,18 +15,11 @@ import json
 import requests
 from dotenv import load_dotenv
 
-# --- fido2 import (version‑flexible) ------------------------------------
-try:
-    from fido2.ctap2 import AttestationObject  # fido2 ≥ 0.9
-except ImportError:
-    try:
-        from fido2.attestation.attestation import AttestationObject  # older layout
-    except ImportError:
-        from fido2.attestation import AttestationObject  # very old
+from fido2.ctap2 import AttestationObject
 from fido2.client import ClientData
 from fido2.utils import websafe_decode
 import cbor2
-# ------------------------------------------------------------------------
+
 
 load_dotenv()
 
