@@ -25,11 +25,11 @@ app = Flask(__name__)
 app.secret_key = os.urandom(32)
 
 RP_NAME = "Passkey Test Site"
-# RP_ID = "localhost"
-# ORIGIN = "http://localhost:8000"
 
+# RP_ID = "localhost"
 RP_ID = "bored-touring-villages-flag.trycloudflare.com"
 ORIGIN = f"https://{RP_ID}"
+
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
