@@ -27,7 +27,7 @@ app.secret_key = os.urandom(32)
 RP_NAME = "Passkey Test Site"
 
 # RP_ID = "localhost"
-RP_ID = "bored-touring-villages-flag.trycloudflare.com"
+RP_ID = "passkey-test.shop"
 ORIGIN = f"https://{RP_ID}"
 
 
