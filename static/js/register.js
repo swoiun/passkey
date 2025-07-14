@@ -1,6 +1,3 @@
-// register.js – WebAuthn passkey registration
-
-// Base64URL → Uint8Array decoder
 function bufferDecode(value) {
   const padding = '='.repeat((4 - (value.length % 4)) % 4);
   const b64 = (value + padding).replace(/-/g, '+').replace(/_/g, '/');
@@ -8,7 +5,6 @@ function bufferDecode(value) {
   return Uint8Array.from([...raw].map(c => c.charCodeAt(0)));
 }
 
-// Convert incoming options JSON to proper format (ArrayBuffers)
 function preformatCreate(options) {
   options.challenge = bufferDecode(options.challenge);
   options.user.id   = bufferDecode(options.user.id);
@@ -30,7 +26,6 @@ form.addEventListener('submit', async (e) => {
   if (!username) return;
 
   try {
-    // 1. 요청 옵션 받기
     const optRes = await fetch('/generate-registration-options', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -38,10 +33,8 @@ form.addEventListener('submit', async (e) => {
     });
     const options = await optRes.json();
 
-    // 2. navigator.credentials.create 호출 (옵션 형식 조정)
     const cred = await navigator.credentials.create({ publicKey: preformatCreate(options) });
 
-    // 3. 결과를 서버에 전송 – ArrayBuffers → base64url
     const attObj = new Uint8Array(cred.response.attestationObject);
     const clientData = new Uint8Array(cred.response.clientDataJSON);
 
