@@ -101,6 +101,18 @@ small {
   border-radius: 15px;
   width: 100%;
   box-sizing: border-box;
+
+  /* ✅ 부드럽게 나타나는 트랜지션 효과 */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.message-box.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .success {
@@ -126,7 +138,8 @@ small {
     margin-bottom: 1.5rem;
   }
 
-  input, button {
+  input,
+  button {
     font-size: 1rem;
     padding: 0.7rem 1rem;
     border-radius: 15px;

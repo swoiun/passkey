@@ -20,6 +20,20 @@ function preformatCreate(options) {
 const form = document.getElementById('register-form');
 const resultBox = document.getElementById('result');
 
+function showMessage(type, message) {
+  resultBox.className = `message-box ${type}`;
+  resultBox.textContent = message;
+
+  // 강제로 리플로우를 일으켜 애니메이션 초기화
+  void resultBox.offsetWidth;
+  resultBox.classList.add('show');
+
+  // 3초 뒤 .show 클래스 제거 (애니메이션 재사용 가능하게)
+  setTimeout(() => {
+    resultBox.classList.remove('show');
+  }, 3000);
+}
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const username = document.getElementById('username').value.trim();
@@ -33,7 +47,9 @@ form.addEventListener('submit', async (e) => {
     });
     const options = await optRes.json();
 
-    const cred = await navigator.credentials.create({ publicKey: preformatCreate(options) });
+    const cred = await navigator.credentials.create({
+      publicKey: preformatCreate(options)
+    });
 
     const attObj = new Uint8Array(cred.response.attestationObject);
     const clientData = new Uint8Array(cred.response.clientDataJSON);
@@ -66,13 +82,11 @@ form.addEventListener('submit', async (e) => {
 
     const regJson = await regRes.json();
     if (regJson.status === 'ok') {
-      resultBox.className = 'message-box success';
-      resultBox.textContent = '패스키 등록 성공!';
+      showMessage('success', '패스키 등록 성공!');
     } else {
       throw new Error(regJson.message || '등록 실패');
     }
   } catch (err) {
-    resultBox.className = 'message-box error';
-    resultBox.textContent = `오류: ${err.message}`;
+    showMessage('error', `오류: ${err.message}`);
   }
 });
